@@ -105,10 +105,7 @@ namespace Kudu.Core.Infrastructure
             }
             catch (Exception ex)
             {
-                if (!process.ProcessName.Equals("w3wp", StringComparison.OrdinalIgnoreCase))
-                {
-                    tracer.TraceError(String.Format("GetParentProcess of {0}({1}) failed with {2}", process.ProcessName, process.Id, ex));
-                }
+                tracer.Trace("GetParentProcess of {0}({1}) failed with {2}", process.ProcessName, process.Id, ex);
                 return null;
             }
         }
